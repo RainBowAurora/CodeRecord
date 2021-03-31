@@ -1,12 +1,17 @@
 language: cpp
 
-os: linux
+os:
+  - linux
 
 compiler: gcc
 
+before_script:
+  - mkdir build
+  - cd build
+
 # build instructions
 script:
-   - cmake -DENABLE_TRAVIS=ON CMakeLists.txt
+   - cmake -DENABLE_TRAVIS=ON ..
    - make
 
 #只有指定的分支提交时才会运行脚本
