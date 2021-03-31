@@ -6,7 +6,7 @@ compiler: gcc
 
 # build instructions
 script:
-   - cmake -DENABLE_TRAVIS=ON ..
+   - cmake -DENABLE_TRAVIS=ON CMakeLists.txt
    - make
 
 #只有指定的分支提交时才会运行脚本
