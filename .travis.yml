@@ -1,35 +1,19 @@
 language: cpp
 
-os:
-  - linux
+os: linux
 
 compiler: gcc
 
-before_script:
-  - mkdir build
-  - cd build
-
 # build instructions
-
 script:
    - cmake -DENABLE_TRAVIS=ON ..
    - make
-
-after_script:
-  - cd ..
-  - git clone https://${GH_REF} .temp
-  - cd .temp
-  - git checkout gh-pages
-  - cd ../
-  - mv .temp/.git dist
-  - cd dist
-  - git config user.name "${U_NAME}"
-  - git config user.email "${U_EMAIL}"
-  - git add .
-  - git commit -m ":construction_worker:- Build & Deploy by Travis CI"
-  - git push --force --quiet "https://${TravisToken}@${GH_REF}" gh-pages:${D_BRANCH}
 
 #只有指定的分支提交时才会运行脚本
 branches:
   only:
     - main
+    
+notifications:
+  email: true
+ 
