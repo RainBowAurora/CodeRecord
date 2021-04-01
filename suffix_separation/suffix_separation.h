@@ -19,7 +19,7 @@ std::tuple<std::string, std::string> PathFindExtension(const std::string& path)
     std::regex re(R"((.+?)(\.[^.]+)?)");
     std::smatch results;
     std::regex_match(path, results, re);
-    return {results[1].str(), results[2].str()};
+    return {results[1].str().c_str(), results[2].str().c_str()};
 }
 
 #endif /*__SUFFIX_SEPARATION_H__*/
