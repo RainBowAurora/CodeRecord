@@ -1,0 +1,17 @@
+name: google test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: configure
+      run: mkdir build && cd build && cmake -DENABLE_TRAVIS=ON ..
+    - name: make
+      run: cd build && make
