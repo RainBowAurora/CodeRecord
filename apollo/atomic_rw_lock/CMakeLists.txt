@@ -6,11 +6,7 @@ project(atomic_rw_lock VERSION 1.0  LANGUAGES CXX)
 
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
 
-if(NOT ENABLE_TRAVIS)
-  find_package(GTest REQUIRED)
-  message(STATUS "find_package ${ENABLE_TRAVIS}")
-  include_directories(${GTEST_INCLUDE_DIRS})
-endif()
+find_package(GTest REQUIRED)
 
 # 添加需要编译的源码(存放源码的路径和名字)
 add_executable(${PROJECT_NAME}_test atomic_rw_lock_test.cpp) 

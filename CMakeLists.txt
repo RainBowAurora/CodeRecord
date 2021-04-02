@@ -6,10 +6,8 @@ endif()
 
 project(all)
 
-option (ENABLE_TRAVIS
-"Use ENABLE_TRAVIS" OFF) 
-
-if(ENABLE_TRAVIS)
+find_package(GTest REQUIRED)
+if(NOT GTest_FOUND)
   include(GoogleTest.cmake)
   set(GTEST_BOTH_LIBRARIES gtest_main)
 endif()

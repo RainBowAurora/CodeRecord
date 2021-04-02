@@ -6,7 +6,6 @@ struct A{
     void Print(){ std::cout << "A::Print\n";}
 };
 
-
 DEFINE_TYPE_TRAIT(Test1, Print1)
 
 int main(int argc, char *argv[])

@@ -4,12 +4,7 @@ project(suffix_separation)
 
 add_compile_options(-std=c++11)
 
-if(NOT ENABLE_TRAVIS)
-  find_package(GTest REQUIRED)
-  message(STATUS "find_package ${ENABLE_TRAVIS}")
-  include_directories(${GTEST_INCLUDE_DIRS})
-endif()
-
+find_package(GTest REQUIRED)
 
 add_executable(${PROJECT_NAME}_test suffix_separation_test.cpp )
 

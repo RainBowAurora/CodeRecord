@@ -6,4 +6,14 @@ project(thread_pool LANGUAGES CXX)
 
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
 
-add_executable(${PROJECT_NAME} thread_pool.cc main.cpp)
+find_package(GTest REQUIRED)
+
+add_executable(${PROJECT_NAME}_test thread_pool_test.cpp)
+
+target_link_libraries(${PROJECT_NAME}_test ${GTEST_BOTH_LIBRARIES})
+
+enable_testing()
+add_test(
+  NAME google_test
+  COMMAND $<TARGET_FILE:${PROJECT_NAME}_test>
+  )
