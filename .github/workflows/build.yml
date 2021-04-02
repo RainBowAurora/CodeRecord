@@ -16,4 +16,4 @@ jobs:
     - name: make
       run: cd build && make
     - name: run test
-      run: sudo find -name "*test"  -type f | bash
+      run: sudo find -name "*_test"  -type f | bash
