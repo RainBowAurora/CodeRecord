@@ -15,3 +15,5 @@ jobs:
       run: mkdir build && cd build && cmake -DENABLE_TRAVIS=ON ..
     - name: make
       run: cd build && make
+    - name: run test
+      run: sudo find -name "*test"  -type f | bash
