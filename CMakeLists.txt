@@ -6,7 +6,7 @@ endif()
 
 project(all)
 
-find_package(GTest REQUIRED)
+find_package(GTest)
 if(NOT GTest_FOUND)
   include(GoogleTest.cmake)
   set(GTEST_BOTH_LIBRARIES gtest_main)

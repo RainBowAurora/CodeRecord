@@ -4,7 +4,7 @@ project(suffix_separation)
 
 add_compile_options(-std=c++11)
 
-find_package(GTest REQUIRED)
+find_package(GTest)
 
 add_executable(${PROJECT_NAME}_test suffix_separation_test.cpp )
 

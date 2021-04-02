@@ -6,7 +6,7 @@ project(thread_pool LANGUAGES CXX)
 
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
 
-find_package(GTest REQUIRED)
+find_package(GTest)
 
 add_executable(${PROJECT_NAME}_test thread_pool_test.cpp)
 
