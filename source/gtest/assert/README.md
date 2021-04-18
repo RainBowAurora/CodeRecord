@@ -121,7 +121,8 @@ TEST(GeneralTest, ThrowAssertion)
 ## 浮点数断言
 浮点数因为round-off error，两个浮点数完全一样的可能性比较低。所以GTest提供了一系列近似比较的断言。
 
-1. 默认近似度
+1. 默认近似度   
+
 | Fatal assertion                 | Nonfatal assertion              | Verifies                                 |
 | ------------------------------- | ------------------------------- | ---------------------------------------- |
 | `ASSERT_FLOAT_EQ(val1, val2);`  | `EXPECT_FLOAT_EQ(val1, val2);`  | the two `float` values are almost equal  |
@@ -172,11 +173,15 @@ TEST(GeneralTest, GMockMatcher)
 ::testing::StaticAssertTypeEq<T1, T2>();
 ```
 1. 此类型断言允许我们自建谓词进行断言。一个好处是可以提供更加漂亮的错误信息。
+
+
+
 | Fatal assertion                   | Nonfatal assertion                | Verifies                    |
 | --------------------------------- | --------------------------------- | --------------------------- |
 | `ASSERT_PRED1(pred1, val1)`       | `EXPECT_PRED1(pred1, val1)`       | `pred1(val1)` is true       |
 | `ASSERT_PRED2(pred2, val1, val2)` | `EXPECT_PRED2(pred2, val1, val2)` | `pred2(val1, val2)` is true |
 | `...`                             | `...`                             | `...`                       |
+
 
 ```
 bool equal(int m, int n)
@@ -196,11 +201,14 @@ TEST(GeneralTest, PredAssertion)
 ```
 
 2. 我们甚至可以通过一下断言自行定义错误信息输出的格式。
+
 Fatal assertion                                  | Nonfatal assertion                               | Verifies
 ------------------------------------------------ | ------------------------------------------------ | --------
 `ASSERT_PRED_FORMAT1(pred_format1, val1);`       | `EXPECT_PRED_FORMAT1(pred_format1, val1);`       | `pred_format1(val1)` is successful
 `ASSERT_PRED_FORMAT2(pred_format2, val1, val2);` | `EXPECT_PRED_FORMAT2(pred_format2, val1, val2);` | `pred_format2(val1, val2)` is successful
 `...`                                            | `...`                                            | ...
+
+
 
 ```
 bool equal(int m, int n){
@@ -226,6 +234,5 @@ TEST(GeneralTest, PredAssertion)
 }
 ```
 # Reference
-gtest_1_assertion/#more)
-2. [Googletest Primer](https://github.com/google/googletest/blob/master/docs/primer.md)
-3. [Advanced googletest Topics](https://github.com/google/googletest/blob/master/docs/advanced.md)
+1. [Googletest Primer](https://github.com/google/googletest/blob/master/docs/primer.md)
+2. [Advanced googletest Topics](https://github.com/google/googletest/blob/master/docs/advanced.md)
