@@ -1,21 +1,23 @@
+#ifndef __GTEST_ASSERT_H__
+#define __GTEST_ASSERT_H__
+
 #include <iostream>
 #include <string>
-#include <gtest/gtest.h>
 #include <exception>
 #include <stdexcept>
+
+#include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
 namespace {
-    template<typename T>
-    T add(const T& a, const T& b){
-        return a + b;
-    }
 
-// 利用TEST()宏来定义命名一个测试
-// 第一个变量名是测试集的名字，第二个变量名是
-// 测试集中某个测试的名字。不同测试集中的测试可以
-// 有相同的名字
+template<typename T>
+T add(const T& a, const T& b){
+    return a + b;
+}
 
+// 利用TEST()宏来定义命名一个测试第一个变量名是测试集的名字，
+// 第二个变量名是测试集中某个测试的名字。不同测试集中的测试可以有相同的名字
 TEST(GeneralTest, BasicAssertion){
     ASSERT_TRUE(add(1, 2) == 3);
     ASSERT_FALSE(add(1, 2) == 2);
@@ -112,9 +114,4 @@ TEST(GeneralTest, PredAssertion)
 }
 }
 
-int main(int argc, char* argv[])
-{
-    ::testing::InitGoogleTest(&argc, argv);
-
-    return RUN_ALL_TESTS();
-}
+#endif /*__GTEST_ASSERT_H__*/
