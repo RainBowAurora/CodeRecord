@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <algorithm>    // std::find
 #include "cyber_file.h"
 
 using namespace common;
