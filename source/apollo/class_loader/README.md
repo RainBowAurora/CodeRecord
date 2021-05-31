@@ -1,8 +1,22 @@
 # POCO动态加载
-现代操作系统几乎都提供了共享库动态加载的功能。linux提供了dlopen函数来加载共享库。十分粗略地讲，共享库加载就是加载共享库文件，根据函数名符号找到函数的地址，然后调用函数。[poco](https://github.com/pocoproject/poco.git)库是一个跨平台的通用C++库，封装了不同平台上的共享库加载功能。
+classloader直译过来是类加载器，类加载器主要用来动态加载库文件，动态加载是一种机制，计算机程序可以通过这种机制在运行时将库（或者其它二进制文件）加载到内存中，检索库中包含的函数和变量的地址，执行这些函数或访问这些变量。[poco](https://github.com/pocoproject/poco.git)库是一个跨平台的通用C++库，封装了不同平台上的共享库加载功能。
 
-## 使用g++生成和链接动态库方法
-1. g++编译生成so文件
+## 动态加载的优缺点
+* 优点: 
+    1. 运行时更加灵活，可以动态的加载启动功能。
+    2. 可以使用第三方的工具进行扩展
+* 缺点: 
+    1. 启动时间会慢20%
+    2. 执行效率慢了5%，由于动态地址解析PIC
+
+## 程序运行机制
+1. 静态链接 (static linking): 静态链接会把程序拷贝一份到可执行程序，带来的好处是不依赖任何外部程序就可以独立运行，坏处是浪费磁盘和内存空间。
+2. 动态链接 (dynamic linking): 动态链接和静态链接相反，动态链接是在编译时候指定链接到哪个库，在运行时查找对应的库并且加载到内存，而且不同的应用程序在内存中可以共享一份动态库，从而节省系统内存
+3. 动态加载 (dynamic loading): 指的是当一个进程启动后，将一个可执行的文件（原文是executable，我理解为磁盘上的文件 或者驻留在内存中的例程）或库映射到（或者不常发生的复制）到进程内存空间。
+> [动态加载和东台链接之间的区别](https://blog.csdn.net/giantpoplar/article/details/46485649)
+
+### 使用g++生成和链接动态库方法
+4. g++编译生成so文件
 ```
 g++ hello.cpp -fPIC -shared -o libhello.so
 ```
@@ -17,6 +31,15 @@ g++ hello.cpp -fPIC -shared -o libhello.so
 g++ main.cpp -L. -lhello -o main
 ```
 > 修改环境变量 `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.` 否则无法运行
+
+3. 我们可以通过`ldd ./main`来查看运行程序依赖于哪些动态库
+```
+linux-vdso.so.1 (0x00007ffc4d19a000)
+libhello.so => /lib/libhello.so (0x00007f2452dbb000)
+libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f24529ca000)
+/lib64/ld-linux-x86-64.so.2 (0x00007f24531bf000)
+...
+```
 
 ## Poco动态加载类简单案例
 * print_hello.h

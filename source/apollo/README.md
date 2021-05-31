@@ -102,3 +102,4 @@ Cyber RT通过以上三层，实现发现、Meta信息交换、建立连接实�
 
 ## Reference
 1. [沙龙回顾 | Apollo Cyber RT计算框架详解](https://mp.weixin.qq.com/s/d4sLuJFiyFyL6NRhyx-i8A)
+2. [百度开发者中心-Apollo ROS有何不同](https://www.sohu.com/a/161448234_795622)
