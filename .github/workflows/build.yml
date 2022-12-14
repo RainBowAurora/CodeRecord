@@ -13,5 +13,5 @@ jobs:
     - uses: actions/checkout@v3
     - uses: docker://rainbowaurora/ubuntu:18.04
       with: 
-        args: bash build.sh -b
+        args: bash dependent.sh && bash build.sh -b
 
