@@ -8,10 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: docker-ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: docker://rainbowaurora/ubuntu:18.04
+    - uses: docker://rainbowaurora/ubuntu:latest
       with: 
-        args: bash dependent.sh && bash build.sh -b
+        args: bash build.sh -b
 
