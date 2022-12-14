@@ -1,0 +1,29 @@
+#include <Eigen/Dense>
+#include <iostream>
+
+int main(int argc, char *argv[])
+{
+  Eigen::ArrayXXf a(2,2);
+  
+  a << 1,2,
+       3,4;
+  std::cout << "(a > 0).all()   = " << (a > 0).all() << std::endl;
+  std::cout << "(a > 0).any()   = " << (a > 0).any() << std::endl;
+  std::cout << "(a > 0).count() = " << (a > 0).count() << std::endl;
+  std::cout << std::endl;
+  std::cout << "(a > 2).all()   = " << (a > 2).all() << std::endl;
+  std::cout << "(a > 2).any()   = " << (a > 2).any() << std::endl;
+  std::cout << "(a > 2).count() = " << (a > 2).count() << std::endl;
+  
+  return 0;
+}
+
+/*output:
+(a > 0).all()   = 1
+(a > 0).any()   = 1
+(a > 0).count() = 4
+
+(a > 2).all()   = 0
+(a > 2).any()   = 1
+(a > 2).count() = 2
+*/
